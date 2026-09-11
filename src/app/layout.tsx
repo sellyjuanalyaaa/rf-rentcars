@@ -41,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className={`scroll-smooth ${jakarta.variable}`}>
-      <body className={`${jakarta.className} antialiased bg-white text-slate-900 min-h-screen`}>
+      <body suppressHydrationWarning className={`${jakarta.className} antialiased bg-white text-slate-900 min-h-screen`}>
         {children}
       </body>
     </html>

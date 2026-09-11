@@ -8,11 +8,32 @@ import { COMPANY_INFO } from '@/data/info';
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = ['home', 'armada', 'tarif', 'layanan', 'howitworks', 'kenapakami', 'kontak'];
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   const navItems = [
@@ -35,7 +56,7 @@ export const Navbar: React.FC = () => {
     >
       {/* Main navbar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-14' : 'h-20'}`}>
+        <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-[72px]' : 'h-24'}`}>
 
           {/* Logo & Brand */}
           <a href="#home" className="flex items-center gap-2.5 shrink-0">
@@ -59,15 +80,26 @@ export const Navbar: React.FC = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-[13px] font-semibold text-slate-600 hover:text-[#1B3A6B] hover:bg-blue-50 px-3 py-2 rounded-lg transition-all"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const sectionId = item.href.replace('#', '');
+              const isActive = activeSection === sectionId;
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={`relative text-[13px] font-semibold px-3 py-2 rounded-lg transition-all ${
+                    isActive
+                      ? 'text-[#1B3A6B] bg-blue-50'
+                      : 'text-slate-600 hover:text-[#1B3A6B] hover:bg-blue-50'
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-[#1B3A6B] rounded-full" />
+                  )}
+                </a>
+              );
+            })}
           </nav>
 
           {/* CTA */}
@@ -101,16 +133,27 @@ export const Navbar: React.FC = () => {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-t border-slate-100 shadow-xl">
           <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-sm font-semibold text-slate-700 hover:text-[#1B3A6B] hover:bg-blue-50 px-4 py-3 rounded-xl transition-all"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const sectionId = item.href.replace('#', '');
+              const isActive = activeSection === sectionId;
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center justify-between text-sm font-semibold px-4 py-3 rounded-xl transition-all ${
+                    isActive
+                      ? 'text-[#1B3A6B] bg-blue-50'
+                      : 'text-slate-700 hover:text-[#1B3A6B] hover:bg-blue-50'
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="w-2 h-2 rounded-full bg-[#1B3A6B]" />
+                  )}
+                </a>
+              );
+            })}
 
             <div className="mt-3 pt-3 border-t border-slate-100 flex flex-col gap-2">
               <a

@@ -29,7 +29,7 @@ export const CARS_DATA: Car[] = [
     priceCityTour: 849000,
     popular: true,
     badge: 'Paling Laris',
-    image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80',
+    image: '/avanza.jpg',
     features: ['AC Double Blower', 'Audio Bluetooth', 'Hemat BBM', 'Airbags', 'USB Charger']
   },
   {
@@ -45,7 +45,7 @@ export const CARS_DATA: Car[] = [
     priceCityTour: 849000,
     popular: true,
     badge: 'Ekstra Nyaman',
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
+    image: '/expander.jpg',
     features: ['Kabin Luas', 'Suspensi Empuk', 'Keyless Start', 'AC Digital', 'Cruise Control']
   },
   {
@@ -61,7 +61,7 @@ export const CARS_DATA: Car[] = [
     priceCityTour: 1049000,
     popular: true,
     badge: 'Favorit Keluarga',
-    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80',
+    image: '/Toyota-innovareborn.jpg',
     features: ['Mesin Diesel Bertenaga', 'Kabin Captain Seat', 'Rear AC', 'Bantingan Stabil', 'Premium Sound']
   },
   {
@@ -77,7 +77,7 @@ export const CARS_DATA: Car[] = [
     priceCityTour: 1149000,
     popular: true,
     badge: 'Teknologi Hybrid',
-    image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80',
+    image: '/innova-zenix.jpg',
     features: ['Irit Bensin Hybrid', 'Panoramic Sunroof', 'Ambient Lighting', 'Toyota Safety Sense', 'Ultra Quiet']
   },
   {
@@ -93,7 +93,7 @@ export const CARS_DATA: Car[] = [
     priceCityTour: 2199000,
     popular: false,
     badge: 'SUV Gagah & Mewah',
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
+    image: '/fortuner.jpg',
     features: ['Gagah & Prestisius', 'Leather Interior', 'Power Backdoor', 'Terrain Control', 'VIP Comfort']
   },
   {
@@ -109,7 +109,7 @@ export const CARS_DATA: Car[] = [
     priceCityTour: 1349000,
     popular: false,
     badge: 'Rombongan & Group',
-    image: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80',
+    image: '/hiace.jpg',
     features: ['14 Kursi Reclining', 'Kabin Tinggi & Lapang', 'AC Ceiling Individual', 'Cocok Rombongan', 'Bagasi Luas']
   }
 ];
